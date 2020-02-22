@@ -22,11 +22,14 @@ describe('server responses', () => {
   });
 
   it('should respond to a GET request for a swim command', (done) => {
-    // write your test here
-    // expect($.ajax.calledOnce).to.be.true;
-    // ajaxUrl = typeof $.ajax.args[0][0] === 'string' ? $.ajax.args[0][0] : $.ajax.args[0][0].url;
-    // expect(ajaxUrl).to.equal(Parse.server);
+    let {req, res} = server.mock('/', 'GET');
 
+    var commands = ['up', 'down', 'left', 'right'];
+
+    httpHandler.router(req, res);
+    expect(res._responseCode).to.equal(200);
+    expect(res._ended).to.equal(true);
+    expect(commands).to.contain(res._data.toString());
     done();
   });
 
