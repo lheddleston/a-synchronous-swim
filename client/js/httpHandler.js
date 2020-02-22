@@ -6,22 +6,19 @@
   // TODO: build the swim command fetcher here
   //
 
-  const ajaxGetCommand = () => {
+  const getDirection = () => {
     $.ajax({
       type: 'GET',
       data: {},
       url: serverUrl,
       success: (data) => {
         SwimTeam.move(data);
-        // console.log('cry');
-      }
+      },
+      complete: () => setTimeout(getDirection, 30000)
     });
   }
+getDirection();
 
-  $.get(serverUrl, function(data) {
-    console.log('GET server request test');
-    SwimTeam.move(data);
-  })
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
