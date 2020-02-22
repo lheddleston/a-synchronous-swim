@@ -26,6 +26,7 @@ const logKeypress = (key) => {
 ///////////////////////////////////////////////////////////////////////////////
 
 var message = ''; // a buffer to collect key presses
+var test = [];
 
 module.exports.initialize = (callback) => {
 
@@ -39,6 +40,8 @@ module.exports.initialize = (callback) => {
     // check to see if the keypress itself is a valid message
     if (isValidMessage(key.name)) {
       callback(key.name);
+      messageQueue.enqueue(key.name);
+      // console.log("message queue: ", messages);
       return; // don't do any more processing on this key
     }
     // otherwise build up a message from individual characters
