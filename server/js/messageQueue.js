@@ -1,6 +1,4 @@
-messages = []; // the storage unit for messages
-
-const variable = "HELLO WORLD!!!!!";
+const messages = []; // the storage unit for messages
 
 module.exports.enqueue = (message) => {
   console.log(`Enqueing message: ${message}`);
